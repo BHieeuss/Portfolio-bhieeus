@@ -31,7 +31,7 @@ function initializeApp() {
   initParticles();
   // Initialize navigation
   initNavigation();
-  
+
   // Initialize mobile navigation
   initMobileNavigation();
 
@@ -690,259 +690,283 @@ Contact: john.doe@email.com
 
 // Mobile Navigation functionality
 function initMobileNavigation() {
-    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-    const desktopNavLinks = document.querySelectorAll('.nav-link');
-    const mobileHomeBtn = document.querySelector('.mobile-home-btn');
-    
-    // Handle mobile home button click
-    if (mobileHomeBtn) {
-        mobileHomeBtn.addEventListener('click', function() {
-            const targetSection = 'home';
-            
-            // Remove active class from all elements
-            mobileNavItems.forEach(nav => nav.classList.remove('active'));
-            desktopNavLinks.forEach(nav => nav.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to home elements
-            this.classList.add('active');
-            const homeNavLink = document.querySelector('[data-section="home"]');
-            if (homeNavLink) {
-                homeNavLink.classList.add('active');
-            }
-            
-            // Show home section
-            const homeSection = document.getElementById('home');
-            if (homeSection) {
-                homeSection.classList.add('active');
-                animateSectionTransition('home');
-                
-                // Haptic feedback
-                if (navigator.vibrate) {
-                    navigator.vibrate(50);
-                }
-            }
-        });
-    }
-    
-    // Handle mobile navigation clicks
-    mobileNavItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetSection = this.getAttribute('data-section');
-            
-            // Remove active class from all mobile nav items
-            mobileNavItems.forEach(nav => nav.classList.remove('active'));
-            
-            // Remove active class from all desktop nav items
-            desktopNavLinks.forEach(nav => nav.classList.remove('active'));
-            
-            // Remove active class from all sections
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked mobile nav item
-            this.classList.add('active');
-            
-            // Add active class to corresponding desktop nav item
-            const correspondingDesktopNav = document.querySelector(`[data-section="${targetSection}"]`);
-            if (correspondingDesktopNav) {
-                correspondingDesktopNav.classList.add('active');
-            }
-            
-            // Show target section
-            const targetSectionElement = document.getElementById(targetSection);
-            if (targetSectionElement) {
-                targetSectionElement.classList.add('active');
-                
-                // Animate section transition
-                animateSectionTransition(targetSection);
-                
-                // Add haptic feedback for mobile devices
-                if (navigator.vibrate) {
-                    navigator.vibrate(50);
-                }
-            }
-        });
+  const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+  const desktopNavLinks = document.querySelectorAll(".nav-link");
+  const mobileHomeBtn = document.querySelector(".mobile-home-btn");
+
+  // Handle mobile home button click
+  if (mobileHomeBtn) {
+    mobileHomeBtn.addEventListener("click", function () {
+      const targetSection = "home";
+
+      // Remove active class from all elements
+      mobileNavItems.forEach((nav) => nav.classList.remove("active"));
+      desktopNavLinks.forEach((nav) => nav.classList.remove("active"));
+      sections.forEach((section) => section.classList.remove("active"));
+
+      // Add active class to home elements
+      this.classList.add("active");
+      const homeNavLink = document.querySelector('[data-section="home"]');
+      if (homeNavLink) {
+        homeNavLink.classList.add("active");
+      }
+
+      // Show home section
+      const homeSection = document.getElementById("home");
+      if (homeSection) {
+        homeSection.classList.add("active");
+        animateSectionTransition("home");
+
+        // Haptic feedback
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+      }
     });
-      // Sync desktop and mobile navigation
-    desktopNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            const targetSection = this.getAttribute('data-section');
-            
-            // Update mobile navigation
-            mobileNavItems.forEach(item => item.classList.remove('active'));
-            if (mobileHomeBtn) mobileHomeBtn.classList.remove('active');
-            
-            if (targetSection === 'home') {
-                if (mobileHomeBtn) mobileHomeBtn.classList.add('active');
-            } else {
-                const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${targetSection}"]`);
-                if (correspondingMobileNav) {
-                    correspondingMobileNav.classList.add('active');
-                }
-            }
-        });
+  }
+
+  // Handle mobile navigation clicks
+  mobileNavItems.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetSection = this.getAttribute("data-section");
+
+      // Remove active class from all mobile nav items
+      mobileNavItems.forEach((nav) => nav.classList.remove("active"));
+
+      // Remove active class from all desktop nav items
+      desktopNavLinks.forEach((nav) => nav.classList.remove("active"));
+
+      // Remove active class from all sections
+      sections.forEach((section) => section.classList.remove("active"));
+
+      // Add active class to clicked mobile nav item
+      this.classList.add("active");
+
+      // Add active class to corresponding desktop nav item
+      const correspondingDesktopNav = document.querySelector(`[data-section="${targetSection}"]`);
+      if (correspondingDesktopNav) {
+        correspondingDesktopNav.classList.add("active");
+      }
+
+      // Show target section
+      const targetSectionElement = document.getElementById(targetSection);
+      if (targetSectionElement) {
+        targetSectionElement.classList.add("active");
+
+        // Animate section transition
+        animateSectionTransition(targetSection);
+
+        // Add haptic feedback for mobile devices
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+      }
     });
-      // Set initial active state for mobile nav
-    function setInitialMobileNavState() {
-        const activeDesktopNav = document.querySelector('.nav-link.active');
-        if (activeDesktopNav) {
-            const activeSection = activeDesktopNav.getAttribute('data-section');
-            
-            // Clear all mobile nav states
-            mobileNavItems.forEach(item => item.classList.remove('active'));
-            if (mobileHomeBtn) mobileHomeBtn.classList.remove('active');
-            
-            if (activeSection === 'home') {
-                if (mobileHomeBtn) mobileHomeBtn.classList.add('active');
-            } else {
-                const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${activeSection}"]`);
-                if (correspondingMobileNav) {
-                    correspondingMobileNav.classList.add('active');
-                }
-            }
+  });
+  // Sync desktop and mobile navigation
+  desktopNavLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      const targetSection = this.getAttribute("data-section");
+
+      // Update mobile navigation
+      mobileNavItems.forEach((item) => item.classList.remove("active"));
+      if (mobileHomeBtn) mobileHomeBtn.classList.remove("active");
+
+      if (targetSection === "home") {
+        if (mobileHomeBtn) mobileHomeBtn.classList.add("active");
+      } else {
+        const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${targetSection}"]`);
+        if (correspondingMobileNav) {
+          correspondingMobileNav.classList.add("active");
         }
-    }
-    
-    // Initialize mobile nav state
-    setInitialMobileNavState();
-    
-    // Handle window resize - sync navigation states
-    window.addEventListener('resize', function() {
-        if (window.innerWidth <= 768) {
-            setInitialMobileNavState();
-        }
+      }
     });
-    
-    // Handle scroll to update active navigation on mobile
-    let ticking = false;
-    
-    function updateActiveNavOnScroll() {
-        if (window.innerWidth <= 768) {
-            const sections = document.querySelectorAll('.section');
-            const scrollPosition = window.scrollY + 100;
-            
-            sections.forEach(section => {
-                if (section.classList.contains('active')) {
-                    const sectionId = section.getAttribute('id');
-                    
-                    // Update mobile nav
-                    mobileNavItems.forEach(item => item.classList.remove('active'));
-                    const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${sectionId}"]`);
-                    if (correspondingMobileNav) {
-                        correspondingMobileNav.classList.add('active');
-                    }
-                }
-            });
+  });
+  // Set initial active state for mobile nav
+  function setInitialMobileNavState() {
+    const activeDesktopNav = document.querySelector(".nav-link.active");
+    if (activeDesktopNav) {
+      const activeSection = activeDesktopNav.getAttribute("data-section");
+
+      // Clear all mobile nav states
+      mobileNavItems.forEach((item) => item.classList.remove("active"));
+      if (mobileHomeBtn) mobileHomeBtn.classList.remove("active");
+
+      if (activeSection === "home") {
+        if (mobileHomeBtn) mobileHomeBtn.classList.add("active");
+      } else {
+        const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${activeSection}"]`);
+        if (correspondingMobileNav) {
+          correspondingMobileNav.classList.add("active");
         }
-        ticking = false;
+      }
     }
-    
-    function requestScrollUpdate() {
-        if (!ticking) {
-            requestAnimationFrame(updateActiveNavOnScroll);
-            ticking = true;
+  }
+
+  // Initialize mobile nav state
+  setInitialMobileNavState();
+
+  // Handle window resize - sync navigation states
+  window.addEventListener("resize", function () {
+    if (window.innerWidth <= 768) {
+      setInitialMobileNavState();
+    }
+  });
+
+  // Handle scroll to update active navigation on mobile
+  let ticking = false;
+
+  function updateActiveNavOnScroll() {
+    if (window.innerWidth <= 768) {
+      const sections = document.querySelectorAll(".section");
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach((section) => {
+        if (section.classList.contains("active")) {
+          const sectionId = section.getAttribute("id");
+
+          // Update mobile nav
+          mobileNavItems.forEach((item) => item.classList.remove("active"));
+          const correspondingMobileNav = document.querySelector(`.mobile-nav-item[data-section="${sectionId}"]`);
+          if (correspondingMobileNav) {
+            correspondingMobileNav.classList.add("active");
+          }
         }
+      });
     }
-    
-    // Throttled scroll listener
-    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    ticking = false;
+  }
+
+  function requestScrollUpdate() {
+    if (!ticking) {
+      requestAnimationFrame(updateActiveNavOnScroll);
+      ticking = true;
+    }
+  }
+
+  // Throttled scroll listener
+  window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 }
 
 // Touch interactions for mobile navigation
 function initMobileTouchInteractions() {
-    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-    
-    mobileNavItems.forEach(item => {
-        // Add touch start effect
-        item.addEventListener('touchstart', function() {
-            this.style.transform = 'translateY(0) scale(0.95)';
-            this.style.background = 'rgba(139, 92, 246, 0.2)';
-        }, { passive: true });
-        
-        // Reset on touch end
-        item.addEventListener('touchend', function() {
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.background = '';
-            }, 150);
-        }, { passive: true });
-        
-        // Handle touch cancel
-        item.addEventListener('touchcancel', function() {
-            this.style.transform = '';
-            this.style.background = '';
-        }, { passive: true });
-    });
+  const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+
+  mobileNavItems.forEach((item) => {
+    // Add touch start effect
+    item.addEventListener(
+      "touchstart",
+      function () {
+        this.style.transform = "translateY(0) scale(0.95)";
+        this.style.background = "rgba(139, 92, 246, 0.2)";
+      },
+      { passive: true }
+    );
+
+    // Reset on touch end
+    item.addEventListener(
+      "touchend",
+      function () {
+        setTimeout(() => {
+          this.style.transform = "";
+          this.style.background = "";
+        }, 150);
+      },
+      { passive: true }
+    );
+
+    // Handle touch cancel
+    item.addEventListener(
+      "touchcancel",
+      function () {
+        this.style.transform = "";
+        this.style.background = "";
+      },
+      { passive: true }
+    );
+  });
 }
 
 // Initialize touch interactions for mobile
 if (window.innerWidth <= 768) {
-    initMobileTouchInteractions();
+  initMobileTouchInteractions();
 }
 
 // Add swipe gestures for section navigation on mobile
 function initMobileSwipeNavigation() {
-    if (window.innerWidth > 768) return;
-    
-    let startX = 0;
-    let startY = 0;
-    let endX = 0;
-    let endY = 0;
-    
-    const mainContent = document.querySelector('.main-content');
-    
-    mainContent.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    mainContent.addEventListener('touchmove', function(e) {
-        if (!startX || !startY) return;
-        
-        endX = e.touches[0].clientX;
-        endY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    mainContent.addEventListener('touchend', function() {
-        if (!startX || !startY || !endX || !endY) return;
-        
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-        
-        // Only handle horizontal swipes that are more significant than vertical
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-            const currentActiveNav = document.querySelector('.mobile-nav-item.active');
-            const allMobileNavs = Array.from(document.querySelectorAll('.mobile-nav-item'));
-            const currentIndex = allMobileNavs.indexOf(currentActiveNav);
-            
-            let nextIndex;
-            
-            if (diffX > 0) {
-                // Swipe left - next section
-                nextIndex = Math.min(currentIndex + 1, allMobileNavs.length - 1);
-            } else {
-                // Swipe right - previous section
-                nextIndex = Math.max(currentIndex - 1, 0);
-            }
-            
-            if (nextIndex !== currentIndex) {
-                allMobileNavs[nextIndex].click();
-                
-                // Add haptic feedback
-                if (navigator.vibrate) {
-                    navigator.vibrate(30);
-                }
-            }
+  if (window.innerWidth > 768) return;
+
+  let startX = 0;
+  let startY = 0;
+  let endX = 0;
+  let endY = 0;
+
+  const mainContent = document.querySelector(".main-content");
+
+  mainContent.addEventListener(
+    "touchstart",
+    function (e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  mainContent.addEventListener(
+    "touchmove",
+    function (e) {
+      if (!startX || !startY) return;
+
+      endX = e.touches[0].clientX;
+      endY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  mainContent.addEventListener(
+    "touchend",
+    function () {
+      if (!startX || !startY || !endX || !endY) return;
+
+      const diffX = startX - endX;
+      const diffY = startY - endY;
+
+      // Only handle horizontal swipes that are more significant than vertical
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        const currentActiveNav = document.querySelector(".mobile-nav-item.active");
+        const allMobileNavs = Array.from(document.querySelectorAll(".mobile-nav-item"));
+        const currentIndex = allMobileNavs.indexOf(currentActiveNav);
+
+        let nextIndex;
+
+        if (diffX > 0) {
+          // Swipe left - next section
+          nextIndex = Math.min(currentIndex + 1, allMobileNavs.length - 1);
+        } else {
+          // Swipe right - previous section
+          nextIndex = Math.max(currentIndex - 1, 0);
         }
-        
-        // Reset values
-        startX = 0;
-        startY = 0;
-        endX = 0;
-        endY = 0;
-    }, { passive: true });
+
+        if (nextIndex !== currentIndex) {
+          allMobileNavs[nextIndex].click();
+
+          // Add haptic feedback
+          if (navigator.vibrate) {
+            navigator.vibrate(30);
+          }
+        }
+      }
+
+      // Reset values
+      startX = 0;
+      startY = 0;
+      endX = 0;
+      endY = 0;
+    },
+    { passive: true }
+  );
 }
 
 // Initialize swipe navigation for mobile
