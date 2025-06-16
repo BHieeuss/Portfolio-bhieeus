@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trần Bá Hiếu - Web Developer | IT Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Advanced Loading Screen -->
+    <div class="loader">
+      <div class="loader-content">        <!-- Animated Avatar -->
+        <div class="loader-avatar-container">
+          <div class="avatar-circle">
+            <img src="assets/img/loading.jpg" alt="Avatar" class="avatar-image" style="filter: none !important; -webkit-filter: none !important" />
+            <div class="avatar-rings">
+              <div class="ring ring-1"></div>
+              <div class="ring ring-2"></div>
+              <div class="ring ring-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="progress-percentage">0%</div>
+        </div>
+
+        <!-- Loading Text with Typewriter -->
+        <div class="loader-text-container">
+          <div class="loader-text">Loading Portfolio</div>
+          <div class="loading-dots">
+            <span class="dot dot-1">.</span>
+            <span class="dot dot-2">.</span>
+            <span class="dot dot-3">.</span>
+          </div>
+        </div>
+
+        <!-- Loading Status -->
+        <div class="loading-status">
+          <div class="status-item">
+            <span class="status-icon">⚡</span>
+            <span class="status-text">Initializing...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex justify-between items-center">
+          <a href="#" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition"> <span class="text-blue-600">B</span>Hieeus </a>
+
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 transition">Skills</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+          </div>
+          <button id="mobile-menu-button" class="mobile-menu-button md:hidden text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu-container md:hidden bg-white shadow-lg overflow-hidden">
+        <div class="mobile-menu-content">
+          <a href="#home" class="mobile-menu-item block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"> <i class="fas fa-home mr-3"></i>Home </a>
+          <a href="#about" class="mobile-menu-item block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"> <i class="fas fa-user mr-3"></i>About </a>
+          <a href="#skills" class="mobile-menu-item block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"> <i class="fas fa-code mr-3"></i>Skills </a>
+          <a href="#contact" class="mobile-menu-item block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"> <i class="fas fa-envelope mr-3"></i>Contact </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative overflow-hidden">
+      <!-- Animated Background -->
+      <div class="hero-bg">
+        <div class="floating-particles"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <!-- Content -->
+      <div class="relative z-10 container mx-auto px-4 min-h-screen flex items-center">
+        <div class="w-full flex flex-col lg:flex-row items-center justify-between">
+          <!-- Mobile Avatar - Shows first on mobile -->          <div class="mobile-avatar lg:hidden w-full flex justify-center mb-8">
+            <div class="profile-container-mobile">
+              <!-- Hologram effect rings -->
+              <div class="hologram-ring ring-1"></div>
+              <div class="hologram-ring ring-2"></div>
+              <div class="hologram-ring ring-3"></div>
+
+              <!-- Profile image with high-tech frame -->
+              <div class="profile-frame">
+                <div class="scanning-line"></div>
+                <img src="assets/img/avatar.jpg" alt="Trần Bá Hiếu" class="profile-image" style="filter: none !important; -webkit-filter: none !important" />
+                <div class="tech-overlay">
+                  <div class="tech-corners"></div>
+                  <div class="status-indicators">
+                    <div class="status-dot active" data-status="ONLINE"></div>
+                    <div class="status-dot active" data-status="CODING"></div>
+                    <div class="status-dot active" data-status="AVAILABLE"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating tech icons -->
+              <div class="floating-tech">
+                <i class="fab fa-react tech-icon" style="--delay: 0s"></i>
+                <i class="fab fa-node-js tech-icon" style="--delay: 0.5s"></i>
+                <i class="fab fa-docker tech-icon" style="--delay: 1s"></i>
+                <i class="fab fa-github tech-icon" style="--delay: 1.5s"></i>
+                <i class="fas fa-database tech-icon" style="--delay: 2s"></i>
+                <i class="fab fa-microsoft tech-icon" style="--delay: 2.5s"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left Content -->
+          <div class="lg:w-1/2 mb-10 lg:mb-0 text-center lg:text-left">
+            <!-- Greeting with hand wave -->
+            <div class="greeting-container mb-6">
+              <h1 class="greeting-text text-4xl lg:text-6xl font-bold tracking-tight">
+                <div class="hand-wave-container">
+                  <span class="hand-wave">👋</span>
+                </div>
+                <span class="hi-text">Hi,</span>
+                <span class="intro-text">Tôi là</span>
+                <br />
+                <span class="name-text text-gradient-animated">Trần Bá Hiếu</span>
+              </h1>
+            </div>
+
+            <!-- Terminal-style typing -->
+            <div class="terminal-window mb-8">
+              <div class="terminal-header">
+                <div class="terminal-buttons">
+                  <span class="terminal-btn red"></span>
+                  <span class="terminal-btn yellow"></span>
+                  <span class="terminal-btn green"></span>
+                </div>
+                <span class="terminal-title">developer.exe</span>
+              </div>
+              <div class="terminal-content">
+                <div class="terminal-line">
+                  <span class="terminal-prompt">~$ </span>
+                  <span class="typing-text" data-text="whoami"></span>
+                </div>
+                <div class="terminal-line">
+                  <span class="terminal-output typing-roles">Web Developer | 日本 | IT Student @TVU</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="terminal-prompt">~$ </span>
+                  <span class="typing-text" data-text="cat skills.txt"></span>
+                </div>
+                <div class="terminal-line">
+                  <span class="terminal-output typing-skills">.NET Core, Angular, SQL Server, Docker, Github...</span>
+                </div>
+                <div class="terminal-cursor">_</div>
+              </div>
+            </div>
+            <!-- Description with typewriter effect -->
+            <p class="text-xl text-gray-800 mb-8 leading-relaxed typewriter-text opacity-0">
+              Dù bạn chậm hơn người khác, <br />
+              chỉ cần không dừng lại – bạn vẫn đang tiến lên.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contact" class="cyber-btn cyber-btn-primary group">
+                <span class="cyber-btn-text">INITIALIZE_CONTACT()</span>
+                <div class="cyber-btn-effect"></div>
+              </a>
+              <a href="#projects" class="cyber-btn cyber-btn-secondary group">
+                <span class="cyber-btn-text">VIEW_PROJECTS()</span>
+                <div class="cyber-btn-effect"></div>
+              </a>
+            </div>
+
+            <!-- Code snippet floating -->
+            <div class="code-snippet">
+              <pre><code class="language-javascript">
+const developer = {
+  name: "Trần Bá Hiếu",
+  passion: "Full-Stack Development",
+  code: ["JavaScript", "C#", "Python"],
+  challenge: "Building the future"
+};
+              </code></pre>
+            </div>
+          </div>          <!-- Right Content - 3D Profile (Desktop only) -->
+          <div class="hidden lg:flex lg:w-1/2 justify-center relative">
+            <div class="profile-container">
+              <!-- Hologram effect rings -->
+              <div class="hologram-ring ring-1"></div>
+              <div class="hologram-ring ring-2"></div>
+              <div class="hologram-ring ring-3"></div>
+
+              <!-- Profile image with high-tech frame -->
+              <div class="profile-frame">
+                <div class="scanning-line"></div>
+                <img src="assets/img/avatar.jpg" alt="Trần Bá Hiếu" class="profile-image" style="filter: none !important; -webkit-filter: none !important" />
+                <div class="tech-overlay">
+                  <div class="tech-corners"></div>
+                  <div class="status-indicators">
+                    <div class="status-dot active" data-status="ONLINE"></div>
+                    <div class="status-dot active" data-status="CODING"></div>
+                    <div class="status-dot active" data-status="AVAILABLE"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating tech icons -->
+              <div class="floating-tech">
+                <i class="fab fa-react tech-icon" style="--delay: 0s"></i>
+                <i class="fab fa-node-js tech-icon" style="--delay: 0.5s"></i>
+                <i class="fab fa-docker tech-icon" style="--delay: 1s"></i>
+                <i class="fab fa-github tech-icon" style="--delay: 1.5s"></i>
+                <i class="fas fa-database tech-icon" style="--delay: 2s"></i>
+                <i class="fab fa-microsoft tech-icon" style="--delay: 2.5s"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p class="scroll-text">Scroll to explore</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-16 text-center section-title fade-in">About Me</h2>
+
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 slide-in-left">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-600">My Journey in IT</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Hello! I'm Hiếu, a Computer Science student at Tra Vinh University specializing in Software Engineering. With 3+ years of hands-on experience in full-stack development, I've worked with technologies like .NET Core, C#, SQL Server, and cloud platforms. My technical journey includes:
+            </p>
+            <ul class="list-disc pl-5 mb-4 text-gray-700 space-y-1">
+              <li>Developing RESTful APIs with ASP.NET Core</li>
+              <li>Implementing CI/CD pipelines with GitHub Actions</li>
+              <li>Containerizing applications using Docker</li>
+              <li>Deploying to cloud platforms like Azure</li>
+            </ul>
+            <p class="text-gray-700 mb-4 leading-relaxed">I specialize in creating responsive, user-friendly websites with clean code and modern design principles. I believe in the power of technology to solve problems and create meaningful experiences for users.</p>
+            <p class="text-gray-700 leading-relaxed">When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+          </div>
+          <div class="md:w-1/2 slide-in-right">
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+              <h3 class="text-2xl font-semibold mb-6 text-green-600">Education & Experience</h3>
+
+              <div class="mb-6">
+                <div class="flex items-start mb-4">
+                  <div class="bg-blue-100 p-2 rounded-full mr-4">
+                    <i class="fas fa-graduation-cap text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Tra Vinh University</h4>
+                    <p class="text-gray-600">Bachelor of Information Technology</p>
+                    <p class="text-gray-500 text-sm">2021 - Present</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-green-100 p-2 rounded-full mr-4">
+                    <i class="fas fa-laptop-code text-green-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Freelance Web Developer</h4>
+                    <p class="text-gray-600">Building websites for small businesses and personal projects</p>
+                    <p class="text-gray-500 text-sm">2020 - Present</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="font-semibold mb-3 text-gray-800">My Approach</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Responsive Design</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Clean Code</span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">User Experience</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Modern Solutions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-50">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-16 text-center section-title fade-in">Technologies Stack</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div class="tech-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center transition hover:shadow-lg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" class="h-16 w-16 mb-3" alt=".NET Core" />
+            <span class="font-medium">.NET Core</span>
+          </div>
+          <div class="tech-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center transition hover:shadow-lg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="h-16 w-16 mb-3" alt="C#" />
+            <span class="font-medium">C#</span>
+          </div>
+          <div class="tech-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center transition hover:shadow-lg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="h-16 w-16 mb-3" alt="Docker" />
+            <span class="font-medium">Docker</span>
+          </div>
+          <div class="tech-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center transition hover:shadow-lg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="h-16 w-16 mb-3" alt="Azure" />
+            <span class="font-medium">Azure</span>
+          </div>
+          <div class="tech-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center transition hover:shadow-lg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" class="h-16 w-16 mb-3" alt="SQL Server" />
+            <span class="font-medium">SQL Server</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-white">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-16 text-center section-title fade-in">My Skills</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Frontend Skills -->
+          <div class="skill-card bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.1s">
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-code text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Frontend Development</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>HTML5, CSS3, JavaScript (ES6+)</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>Responsive Web Design</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>Tailwind CSS, Bootstrap</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>React.js (Learning)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Backend Skills -->
+          <div class="skill-card bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.2s">
+            <div class="flex items-center mb-4">
+              <div class="bg-green-100 p-3 rounded-full mr-4">
+                <i class="fas fa-server text-green-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Backend Development</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>C#, .NET Core</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>ASP.NET MVC</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>RESTful APIs</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>Angular (Basic)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Other Skills -->
+          <div class="skill-card bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-tools text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Other Skills</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>SQL Databases</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>Git & GitHub</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>Docker Basics</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-2"></i>
+                <span>UI/UX Principles</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 fade-in" style="animation-delay: 0.4s">
+          <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Tools & Technologies I Use</h3>
+          <div class="flex flex-wrap justify-center gap-6">
+            <div class="flex flex-col items-center">
+              <i class="fab fa-html5 text-4xl text-orange-500 mb-2 social-icon"></i>
+              <span class="text-sm">HTML5</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2 social-icon"></i>
+              <span class="text-sm">CSS3</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-js-square text-4xl text-yellow-500 mb-2 social-icon"></i>
+              <span class="text-sm">JavaScript</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-microsoft text-4xl text-blue-600 mb-2 social-icon"></i>
+              <span class="text-sm">.NET</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-git-alt text-4xl text-orange-600 mb-2 social-icon"></i>
+              <span class="text-sm">Git</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-github text-4xl text-gray-800 mb-2 social-icon"></i>
+              <span class="text-sm">GitHub</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <i class="fab fa-docker text-4xl text-blue-400 mb-2 social-icon"></i>
+              <span class="text-sm">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-16 text-center section-title fade-in">Get In Touch</h2>
+
+        <div class="flex flex-col md:flex-row gap-10">
+          <div class="md:w-1/2 fade-in" style="animation-delay: 0.1s">
+            <h3 class="text-2xl font-semibold mb-6 text-blue-600">Contact Information</h3>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-envelope text-blue-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Email</h4>
+                  <a href="mailto:tbh.16112003@gmail.com" class="text-gray-600 hover:text-blue-600 transition">tbh.16112003@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-green-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-phone-alt text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Phone/Zalo</h4>
+                  <a href="tel:+84379932119" class="text-gray-600 hover:text-green-600 transition">0379932119</a>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-gray-100 p-3 rounded-full mr-4">
+                  <i class="fab fa-github text-gray-800"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">GitHub</h4>
+                  <a href="https://github.com/BHieeuss" target="_blank" class="text-gray-600 hover:text-gray-800 transition">github.com/BHieeuss</a>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                  <i class="fab fa-facebook-f text-blue-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Facebook</h4>
+                  <a href="https://fb.com/bhieuu.203" target="_blank" class="text-gray-600 hover:text-blue-600 transition">fb.com/bhieuu.203</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h4 class="font-semibold mb-4 text-gray-800">Connect with me</h4>
+              <div class="flex space-x-4">
+                <a href="https://github.com/BHieeuss" target="_blank" class="social-icon bg-gray-100 p-3 rounded-full text-gray-800 hover:bg-gray-200 transition">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://fb.com/bhieuu.203" target="_blank" class="social-icon bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 transition">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon bg-blue-600 p-3 rounded-full text-white hover:bg-blue-700 transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon bg-red-100 p-3 rounded-full text-red-600 hover:bg-red-200 transition">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2 fade-in" style="animation-delay: 0.2s">
+            <h3 class="text-2xl font-semibold mb-6 text-green-600">Send Me a Message</h3>
+
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+              </div>
+
+              <div>
+                <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+              </div>
+
+              <div>
+                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+              </div>
+
+              <div>
+                <label for="message" class="block text-gray-700 mb-2">Your Message</label>
+                <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary text-white px-6 py-3 rounded-lg font-medium w-full">Send Message</button>
+            </form>
+
+            <div id="form-success" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-lg"><i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 bg-gray-800 text-white">
+      <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h3 class="text-2xl font-bold"><span class="text-blue-400">B</span>Hieeus</h3>
+            <p class="text-gray-400">Web Developer | IT Student @TVU</p>
+          </div>
+
+          <div class="flex space-x-6">
+            <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+            <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+            <a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
+            <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+            <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2023 Trần Bá Hiếu. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
